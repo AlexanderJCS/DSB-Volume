@@ -2,6 +2,8 @@ import math
 import os
 from typing import Optional
 
+from PyQt6.QtGui import QIntValidator
+
 import ORSModel
 from OrsHelpers.viewLayoutHelper import DisplayLayoutHelper
 import numpy as np
@@ -35,7 +37,10 @@ class MainFormDsb(OrsAbstractWindow):
         # I have to set these manually for some reason
         self.ui.chk_vis_annotations.stateChanged.connect(self.on_chk_vis_annotations_stateChanged)
         self.ui.chk_vis_multiroi.stateChanged.connect(self.on_chk_vis_multiroi_stateChanged)
+        self.ui.line_spine_num.textEdited.connect(self.on_line_spine_num_textEdited)
 
+        self.ui.line_spine_num.setValidator(QIntValidator(0, 9999))
+        self.ui.btn_go_to_spine_num.setEnabled(False)
         self.ui.sldr_neck_point.setMaximum(1000)
         WorkingContext.registerOrsWidget('DSB_efd060071a1711f0b40cf83441a96bd5', implementation, 'MainFormDsb', self)
         self.mesh: Optional[trimesh.Trimesh] = None
@@ -167,7 +172,7 @@ class MainFormDsb(OrsAbstractWindow):
 
         self.visualizer.vis_spine_idx(vis_next)
         self.ui.sldr_neck_point.setValue(self.neck_point_slider_values[vis_next])
-        self.ui.lbl_spine_idx.setText(f"Spine {vis_next + 1} / {len(self.spine_skeletons)}")
+        self.ui.line_spine_num.setText(f"{vis_next + 1}")
 
     @pyqtSlot()
     def on_btn_prev_spine_clicked(self):
@@ -206,6 +211,7 @@ class MainFormDsb(OrsAbstractWindow):
         self.visualizer = vis.Visualizer(self.ui.vis_widget, pld.dendrite_mesh, self.spine_skeletons, pld.annotations, pld.psds)
         self.ui.vis_widget.reset_camera()
         self.jump_vis(0)
+        self.ui.lbl_spine_nums_total.setText(f"/ {len(self.spine_skeletons)}")
 
     @pyqtSlot()
     def on_chk_vis_annotations_stateChanged(self):
@@ -254,6 +260,34 @@ class MainFormDsb(OrsAbstractWindow):
             self.ui.line_head_name.setText(f"{new_name}")
         else:
             self.ui.line_head_name.setText(f"{current_idx + 1}")
+
+    @pyqtSlot()
+    def on_line_spine_num_textEdited(self):
+        if self.visualizer.currently_visualizing is None:
+            return
+
+        try:
+            value = int(self.ui.line_spine_num.text().strip())
+        except ValueError:
+            return
+
+        if value != self.visualizer.currently_visualizing - 1:
+            self.ui.btn_go_to_spine_num.setEnabled(True)
+        else:
+            self.ui.btn_go_to_spine_num.setEnabled(False)
+
+    @pyqtSlot()
+    def on_btn_go_to_spine_num_clicked(self):
+        try:
+            value = int(self.ui.line_spine_num.text().strip()) - 1
+        except ValueError:
+            self.ui.lbl_status.setText("Invalid spine number")
+            return
+
+        current_idx = self.visualizer.currently_visualizing
+        delta = value - current_idx
+
+        self.jump_vis(delta)
 
     @pyqtSlot()
     def on_btn_save_head_clicked(self):
