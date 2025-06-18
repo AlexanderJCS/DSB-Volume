@@ -128,7 +128,7 @@ class MainFormDsb(OrsAbstractWindow):
         spacing = 6
 
         points_tangents, radii_tangents = skel_helper.get_radius_polyline(
-            spine_skeleton[::-1], self.mesh, n_rays=150, aggregate='percentile99',
+            spine_skeleton[::-1], self.mesh, n_rays=125, aggregate='percentile99',
             projection='tangents', path_interpolation_spacing=spacing
         )
 
@@ -158,10 +158,16 @@ class MainFormDsb(OrsAbstractWindow):
             return
 
         if not self.visualizer.has_spine_point(vis_next):
-            # Compute the neck point and tangent for the next spine
-            self.neck_pt_3d, self.neck_pt_tangent, neck_pt_1d = self.compute_neck_point_and_tangent(vis_next)
-
             accumulated = geom.accumulate(self.spine_skeletons[vis_next])
+
+            # Compute the neck point and tangent for the next spine
+            if self.ui.chk_compute_beheading_pt.isChecked():
+                self.neck_pt_3d, self.neck_pt_tangent, neck_pt_1d = self.compute_neck_point_and_tangent(vis_next)
+            else:
+                neck_pt_1d = accumulated[-1]
+                self.neck_pt_3d, self.neck_pt_tangent = geom.point_and_tangent_along_polyline(self.spine_skeletons[vis_next], neck_pt_1d)
+
+            self.visualizer.transform_plane(self.neck_pt_3d, self.neck_pt_tangent)
             self.neck_point_slider_values[vis_next] = int((accumulated[-1] - neck_pt_1d) / accumulated[-1] * self.ui.sldr_neck_point.maximum())
 
             if self.neck_pt_3d is None or self.neck_pt_tangent is None:

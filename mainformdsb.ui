@@ -179,7 +179,7 @@
       <attribute name="title">
        <string>Beheading</string>
       </attribute>
-      <layout class="QVBoxLayout" name="main_vertical_layout" stretch="0,0,1,0,0,0,0,0,0">
+      <layout class="QVBoxLayout" name="main_vertical_layout" stretch="0,0,1,0,0,0,0,0,0,0">
        <item>
         <layout class="QFormLayout" name="formLayout_3">
          <item row="0" column="0">
@@ -296,6 +296,16 @@
         <widget class="QSlider" name="sldr_neck_point">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="chk_compute_beheading_pt">
+         <property name="text">
+          <string>Automatically Compute Beheading Point</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
