@@ -136,6 +136,15 @@ class Visualizer:
             name="rotating_plane"
         )
 
+    def destroy(self):
+        actors = self.plotter.renderer.GetActors()
+        actors.InitTraversal()
+        for _ in range(actors.GetNumberOfItems()):
+            actor = actors.GetNextActor()
+            self.plotter.renderer.RemoveActor(actor)
+        # Finally re-render
+        self.plotter.render()
+
     def transform_plane(self, center, normal):
         # 1) Restore the original point positions
         self.plane.points = self.original_plane_pts.copy()
@@ -147,13 +156,6 @@ class Visualizer:
 
         # 3) Redraw
         self.plotter.render()
-
-    def set_mesh(self, mesh: trimesh.Trimesh):
-        if self.mesh_actor is not None:
-            self.plotter.remove_actor(self.mesh_actor)
-
-        self.mesh_actor = self.plotter.add_mesh(pv.wrap(mesh), color=(0.7, 0.7, 0.7), opacity=0.3)
-        self.plotter.update()
 
     def focus_camera_on_point(self, point, distance=None):
         """

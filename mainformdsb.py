@@ -214,6 +214,11 @@ class MainFormDsb(OrsAbstractWindow):
             self.annotations_kdtree = KDTree([point for point, _ in self.annotations])
 
         self.ui.vis_widget.show()
+
+        if self.visualizer is not None:
+            self.visualizer.destroy()
+            self.visualizer = None
+
         self.visualizer = vis.Visualizer(self.ui.vis_widget, pld.dendrite_mesh, self.spine_skeletons, pld.annotations, pld.psds)
         self.ui.vis_widget.reset_camera()
         self.jump_vis(0)
