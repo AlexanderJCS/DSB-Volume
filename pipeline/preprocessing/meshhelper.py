@@ -133,6 +133,7 @@ def multiroi_to_mesh(multiroi: ORSModel.MultiROI) -> trimesh.Trimesh:
         multiroi.addToVolumeROI(copy_roi, label)
 
         meshes.append(roi_to_mesh(copy_roi, True, False))
+        copy_roi.deleteObjectAndAllItsChildren()
 
     return trimesh.util.concatenate(meshes, trimesh.Trimesh())
 
