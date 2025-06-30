@@ -64,6 +64,14 @@ Once the cut position is set, verify the spine head name is correct by checking 
 
 Finally, click the **Save Head** button. A mesh is then output in Dragonfly and, if a CSV is specified, a new row in the CSV.
 
+| Shortcut                     | Key |
+|------------------------------|-----|
+| Move slider to the left      | Q   |
+| Move slider to the right     | E   |
+| Visualize the previous spine | A   |
+| Visualize the next spine     | D   |
+| Behead / Save Spine Head     | R   |
+
 > ⚠️ **Warning:** Ensure that the CSV not open in Excel, Notepad, etc. since that will interfere with DSB writing to the file.
 
 ![The mesh output in the object tab](images/output.png)
