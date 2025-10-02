@@ -12,7 +12,7 @@ def ors_to_trimesh(ors_mesh: FaceVertexMesh) -> trimesh.Trimesh:
     :param ors_mesh: The ORS mesh to convert
     :return: The trimesh mesh
     """
-    vertices = ors_mesh.getVertices(0).getNDArray().reshape(-1, 3) * 1e9  # Convert from m to nm
+    vertices = ors_mesh.getVertices(0).getNDArray().reshape(-1, 3) * 1e9  # Convert from nm to m
     edges = ors_mesh.getEdges(0).getNDArray().reshape(-1, 3)
 
     return trimesh.Trimesh(vertices=vertices, faces=edges)
@@ -139,7 +139,7 @@ def multiroi_to_mesh(multiroi: ORSModel.MultiROI) -> trimesh.Trimesh:
 
 
 def skeletonize_mesh(mesh: trimesh.Trimesh) -> sk.Skeleton:
-    skel = sk.skeletonize.by_wavefront(mesh, origins=None, waves=1, step_size=1, radius_agg="percentile25")
+    skel = sk.skeletonize.by_wavefront(mesh, origins=None, waves=1, step_size=1)
     sk.post.remove_bristles(skel, los_only=False, inplace=True)
     sk.post.clean_up(skel, inplace=True, theta=1)
     sk.post.despike(skel, inplace=True)
