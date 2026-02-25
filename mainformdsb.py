@@ -42,7 +42,7 @@ class MainFormDsb(OrsAbstractWindow):
         self.ui.line_spine_num.setValidator(QIntValidator(0, 9999))
         self.ui.btn_go_to_spine_num.setEnabled(False)
         self.ui.sldr_neck_point.setMaximum(1000)
-        WorkingContext.registerOrsWidget('DSB_efd060071a1711f0b40cf83441a96bd5', implementation, 'MainFormDsb', self)
+        WorkingContext.registerOrsWidget('DSB_Volume_045f5ca4127611f1bb63e0d55e2bb93d', implementation, 'MainFormDsbVolume', self)
         self.mesh: Optional[trimesh.Trimesh] = None
         self.visualizer = None
         self.spine_skeletons = None
@@ -211,7 +211,7 @@ class MainFormDsb(OrsAbstractWindow):
             None,
             "Select Preprocessing File",
             "",
-            "DSB Files (*.dsb)"
+            "DSB Volume Files (*.dsbv)"
         )
 
         if not filepath:

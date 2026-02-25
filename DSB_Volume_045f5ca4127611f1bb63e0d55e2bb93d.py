@@ -14,7 +14,7 @@ from ORSServiceClass.actionAndMenu.menu import Menu
 from ORSServiceClass.decorators.infrastructure import menuItem
 
 
-class DSB_efd060071a1711f0b40cf83441a96bd5(OrsPlugin):
+class DSB_Volume_045f5ca4127611f1bb63e0d55e2bb93d(OrsPlugin):
 
     # Plugin definition
     multiple = True
@@ -23,8 +23,8 @@ class DSB_efd060071a1711f0b40cf83441a96bd5(OrsPlugin):
     canBeGenericallyOpened = False
 
     # UIs
-    UIDescriptors = [UIDescriptor(name='MainFormDsb',
-                                  title='DSB',
+    UIDescriptors = [UIDescriptor(name='MainFormDsbVolume',
+                                  title='DSB Volume',
                                   dock='Floating',
                                   tab='Main',
                                   modal=False,
@@ -45,17 +45,17 @@ class DSB_efd060071a1711f0b40cf83441a96bd5(OrsPlugin):
 
     @classmethod
     def openGUI(cls):
-        instance = DSB_efd060071a1711f0b40cf83441a96bd5()
+        instance = DSB_Volume_045f5ca4127611f1bb63e0d55e2bb93d()
 
         if instance is not None:
-            instance.openWidget("MainFormDsb")
+            instance.openWidget("MainFormDsbVolume")
 
     @classmethod
     @menuItem("Plugins")
     def DSB(cls):
-        menu_item = Menu(title="Start DSB",
-                         id_="DSB_efd060071a1711f0b40cf83441a96bd5",
+        menu_item = Menu(title="Start DSB Volume",
+                         id_="DSB_Volume_045f5ca4127611f1bb63e0d55e2bb93d",
                          section="",
-                         action="DSB_efd060071a1711f0b40cf83441a96bd5.openGUI()")
+                         action="DSB_Volume_045f5ca4127611f1bb63e0d55e2bb93d.openGUI()")
 
         return menu_item
