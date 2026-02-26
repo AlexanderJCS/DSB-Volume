@@ -16,11 +16,11 @@ set "DRAGONFLY_INSTALL=C:\Program Files\Dragonfly"
 
 :: Copy files
 echo Copying files...
-xcopy "%SCRIPT_DIR%*.*" "%DRAGONFLY_PROGRAMDATA%\pythonAllUsersExtensions\Plugins\DSB_efd060071a1711f0b40cf83441a96bd5" /E /I /Y >nul
+xcopy "%SCRIPT_DIR%*.*" "%DRAGONFLY_PROGRAMDATA%\pythonAllUsersExtensions\Plugins\DSB_Volume_045f5ca4127611f1bb63e0d55e2bb93d" /E /I /Y >nul
 
 :: Install Python dependencies
 echo Installing Python dependencies...
-"%DRAGONFLY_INSTALL%\Python_env\python.exe" -m pip install -r "%DRAGONFLY_PROGRAMDATA%\pythonAllUsersExtensions\Plugins\DSB_efd060071a1711f0b40cf83441a96bd5\requirements.txt"
+"%DRAGONFLY_INSTALL%\Python_env\python.exe" -m pip install -r "%DRAGONFLY_PROGRAMDATA%\pythonAllUsersExtensions\Plugins\DSB_Volume_045f5ca4127611f1bb63e0d55e2bb93d\requirements.txt"
 
 :: echo( is a newline
 echo(
