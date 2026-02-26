@@ -122,7 +122,7 @@ class MainFormDsbVolume(OrsAbstractWindow):
             None,
             "Select Output File Location",
             "",
-            "DSB Files (*.dsb)"
+            "DSB Volume Files (*.dsbv)"
         )
 
         if filepath:
