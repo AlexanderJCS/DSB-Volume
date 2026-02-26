@@ -23,7 +23,7 @@ from .ui_mainformdsb import Ui_MainFormDsb
 from .visualize import visualize as vis
 
 
-class MainFormDsb(OrsAbstractWindow):
+class MainFormDsbVolume(OrsAbstractWindow):
     def __init__(self, implementation, parent=None):
         super().__init__(implementation, parent)
         self.ui = Ui_MainFormDsb()

@@ -36,12 +36,12 @@ class DSB_Volume_045f5ca4127611f1bb63e0d55e2bb93d(OrsPlugin):
 
     @classmethod
     def getMainFormName(cls):
-        return 'MainFormDsb'
+        return 'MainFormDsbVolume'
 
     @classmethod
     def getMainFormClass(cls):
-        from .mainformdsb import MainFormDsb
-        return MainFormDsb
+        from .mainformdsbvolume import MainFormDsbVolume
+        return MainFormDsbVolume
 
     @classmethod
     def openGUI(cls):
