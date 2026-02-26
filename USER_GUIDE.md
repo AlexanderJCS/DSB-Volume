@@ -14,7 +14,7 @@ The preprocessing step collects the raw data and organizes it in a way that is q
 
 You may provide:
 
-* **(Required)** A Dragonfly ROI (voxel segmentation) of the dendrite and dendritic spines *combined*. Note you may need to union the dendrite ROI and spines ROI if they are separate.
+* **(Required)** A Dragonfly mesh of the dendrite and dendritic spines *combined*. To create a smooth mesh that works with DSB Volume, see the [converting a voxel to mesh](https://github.com/AlexanderJCS/dsb-plugin/blob/main/USER_GUIDE.md#converting-voxel-to-mesh). Once a mesh is created, come back to the instructions in this document.
 * **(Optional)** A Dragonfly Annotations to display in the beheading step. It also allows DSB to infer the dendrite names when exporting the spine heads (in the beheading step).
 * **(Optional)** A Dragonfly MultiROI to visualize alongside the dendrite mesh. Useful for visualizing postsynaptic densities (PSDs) to help one better understand where the synapse is.
 
