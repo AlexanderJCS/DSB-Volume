@@ -53,12 +53,12 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label">
            <property name="text">
-            <string>Dendrite + Spine ROI</string>
+            <string>Dendrite Mesh</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="OrsObjectClassComboBox" name="ccb_dendrite_roi_chooser" native="true">
+          <widget class="OrsObjectClassComboBox" name="ccb_dendrite_mesh_chooser" native="true">
            <property name="minimumSize">
             <size>
              <width>0</width>

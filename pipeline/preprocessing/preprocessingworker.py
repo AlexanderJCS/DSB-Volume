@@ -10,19 +10,19 @@ class PreprocessingWorker(QThread):
     update_label: pyqtSignal = pyqtSignal(str)
     finished: pyqtSignal = pyqtSignal()
 
-    def __init__(self, filepath: str, selected_roi: ORSModel.ors.ROI, psds: Optional[ORSModel.ors.MultiROI],
+    def __init__(self, filepath: str, dragonfly_mesh: ORSModel.ors.FaceVertexMesh, psds: Optional[ORSModel.ors.MultiROI],
                  annotations: Optional[ORSModel.ors.Annotation]):
         super().__init__()
 
-        self.selected_roi = selected_roi
+        self.dragonfly_mesh = dragonfly_mesh
         self.psds = psds
         self.annotations = annotations
         self.filepath = filepath
 
     def run(self):
         try:
-            self.update_label.emit("Converting ROI to Mesh")
-            mesh = meshhelper.roi_to_mesh(self.selected_roi)
+            self.update_label.emit("Converting Mesh")
+            mesh = meshhelper.ors_to_trimesh(self.dragonfly_mesh)
 
             annotations_pcd = None
             if self.annotations is not None:

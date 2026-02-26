@@ -28,7 +28,7 @@ class MainFormDsbVolume(OrsAbstractWindow):
         super().__init__(implementation, parent)
         self.ui = Ui_MainFormDsb()
         self.ui.setupUi(self)
-        self.ui.ccb_dendrite_roi_chooser.setManagedClass([ORSModel.ROI])
+        self.ui.ccb_dendrite_mesh_chooser.setManagedClass([ORSModel.FaceVertexMesh])
         self.ui.ccb_annotation_chooser.setManagedClass([ORSModel.Annotation])
         self.ui.ccb_multiroi_chooser.setManagedClass([ORSModel.MultiROI])
         self.ui.ccb_annotation_chooser.setEnabled(self.ui.chk_vis_annotations.isChecked())
@@ -75,8 +75,8 @@ class MainFormDsbVolume(OrsAbstractWindow):
 
     @pyqtSlot()
     def on_btn_preprocessing_run_clicked(self):
-        selected_roi = ORSModel.orsObj(self.ui.ccb_dendrite_roi_chooser.getSelectedGuid())
-        if selected_roi is None:
+        selected_mesh = ORSModel.orsObj(self.ui.ccb_dendrite_mesh_chooser.getSelectedGuid())
+        if selected_mesh is None:
             self.ui.lbl_status.setText("No ROI selected")
             return
 
@@ -90,7 +90,7 @@ class MainFormDsbVolume(OrsAbstractWindow):
             return
 
         self.worker = PreprocessingWorker(
-            filepath, selected_roi,
+            filepath, selected_mesh,
             ORSModel.orsObj(self.ui.ccb_multiroi_chooser.getSelectedGuid()) if self.ui.chk_vis_multiroi.isChecked() else None,
             ORSModel.orsObj(self.ui.ccb_annotation_chooser.getSelectedGuid()) if self.ui.chk_vis_annotations.isChecked() else None
         )
