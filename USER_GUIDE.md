@@ -20,7 +20,7 @@ You may provide:
 
 > ✅ **Tip:** Click the checkbox next to the optional items to enable them, then you may select the annotation/MultiROI.
 
-In addition, you must specify an output file (with a `.dsb` file extension). This file will be loaded in the **Beheading** step so that preprocessing does not need to be performed every time DSB is run. The filesize depends on the dataset size, but is generally a couple hundred megabytes.
+In addition, you must specify an output file (with a `.dsbv` file extension). This file will be loaded in the **Beheading** step so that preprocessing does not need to be performed every time DSB is run. The filesize depends on the dataset size, but is generally a couple hundred megabytes.
 
 Once you specify the dendrite + spines and optionally annotations or MultiROI, click the **Run** button. The preprocessing time depends on the size of the dataset, but is generally 10-20 minutes. Once the **Run** button is pressed, minimal human intervention is required. Text on the bottom of the DSB window will display when the preprocessing step is complete.
 
@@ -40,7 +40,7 @@ To access the beheading page, click the **Beheading** tab on the top of the DSB 
 
 ### Loading a Preprocessing File
 
-Loading a preprocessing file is simple: click **Select Preprocessing File** and choose the `.dsb` file to load.
+Loading a preprocessing file is simple: click **Select Preprocessing File** and choose the `.dsbv` file to load.
 
 After the preprocessing file is selected, you should see the visualization window populate.
 

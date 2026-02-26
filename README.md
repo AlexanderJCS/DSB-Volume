@@ -4,7 +4,7 @@ A Dragonfly 3D World plugin written at the Max Planck Florida Institute for Neur
 
 ## Features
 * Preprocessing
-  * Data preprocessing done automatically and saved to a `.dsb` file for later use
+  * Data preprocessing done automatically and saved to a `.dsbv` file for later use
 * Analysis
   * Automatically suggests a point to behead with easy human adjustment by dragging a slider, moving the beheading point along the spine
 * Visualization
