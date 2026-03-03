@@ -8,7 +8,7 @@ Ensure that Dragonfly 2024.1 is installed. Close all Dragonfly windows.
 
 ## Downloading the Latest Release
 
-Head to the [releases page](https://github.com/AlexanderJCS/dsb-plugin/releases/) and find the latest release. Click **Source Code (zip)** to download the source code.
+Head to the [releases page](https://github.com/AlexanderJCS/dsb-volume/releases/latest) and find the latest release. Click **Source Code (zip)** to download the source code.
 
 ## Installing the Plugin
 
